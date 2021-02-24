@@ -43,8 +43,9 @@ Calculate pearson's correlation of semantic similarity with TFIDF vectors for te
 
 Calculate pearson's correlation of semantic similarity with the metrics specified in the starter code.
 Calculate the metrics between lowercased inputs and ensure that the metric is the same for either order of the 
-sentences (i.e. sim(A,B) == sim(B,A))
+sentences (i.e. sim(A,B) == sim(B,A)). If not, use the strategy from the lab.
 Use SmoothingFunction method0 for BLEU, as described in the nltk documentation.
 
 Run this code on the three partitions of STSBenchmark to fill in the correlations table above.
-Use the --path flag and edit PyCharm run configurations, instead of altering your code for each file.
+Use the --sts_data flag and edit PyCharm run configurations to run against different inputs,
+ instead of altering your code for each file.
