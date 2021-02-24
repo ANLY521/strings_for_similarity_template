@@ -5,11 +5,29 @@ This project examines string similarity metrics for semantic textual similarity.
 Though semantics go beyond the surface representations seen in strings, some of these
 metrics constitute a good benchmark system for detecting STS.
 
-
 Data is from the [STS benchmark](http://ixa2.si.ehu.es/stswiki/index.php/STSbenchmark).
 
+**TODO:**
+Describe each metric in ~ 1 sentence
 
-## lab.py
+**TODO:** Fill in the correlations. Expected output for DEV is provided; it is ok if your actual result
+varies slightly due to preprocessing/system difference, but the difference should be quite small.
+
+**Correlations:**
+
+Metric | Train | Dev | Test 
+------ | ----- | --- | ----
+NIST | (fill me) | 0.593
+BLEU | (fill me) | 0.433
+WER | (fill me) | -0.452
+LCS | (fill me) | 0.468
+Edit Dist | (fill me) | -0.175
+
+**TODO:**
+Show usage of the homework script with command line flags (see example under lab, week 1).
+
+
+## lab, week 1: lab.py
 
 `lab.py` calculates NIST machine translation metric for sentence pairs in an STS dataset.
 
@@ -17,21 +35,16 @@ Example usage:
 
 `python lab.py --sts_data stsbenchmark/sts-dev.csv`
 
-## dev_output.txt
+## lab, week 2: sts_tfidf.py
 
-Desired output for `sts_pearson.py` on `sts-dev.csv`. Homework will be evaluated against the test data.
+Calculate pearson's correlation of semantic similarity with TFIDF vectors for text.
 
-## sts_pearson.py
+## homework, week 1: sts_pearson.py
 
 Calculate pearson's correlation of semantic similarity with the metrics specified in the starter code.
-Calculate the metrics between lowercased inputs and ensure that the metric is the same for either order of the sentences (i.e. sim(A,B) == sim(B,A))
+Calculate the metrics between lowercased inputs and ensure that the metric is the same for either order of the 
+sentences (i.e. sim(A,B) == sim(B,A))
 Use SmoothingFunction method0 for BLEU, as described in the nltk documentation.
 
-TODO: Update these instructions under `sts_pearson.py` with a description of your code.
-* ~ 1 sentence about each of the metrics used.
-* Describe what your script does. Be affirmative and efficient 
-(see [guidelines for documenting the Python language]( 
-https://devguide.python.org/documenting/#affirmative-tone) )
-* Include a usage example showing command line flags
-* Describe your output
-* More README philosophy [here](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project) 
+Run this code on the three partitions of STSBenchmark to fill in the correlations table above.
+Use the --path flag and edit PyCharm run configurations, instead of altering your code for each file.

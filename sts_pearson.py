@@ -7,23 +7,20 @@ def main(sts_data):
     """Calculate pearson correlation between semantic similarity scores and string similarity metrics.
     Data is formatted as in the STS benchmark"""
 
-    # read the dataset
-    # TODO: implement in util.py
+    # TODO 1: read the dataset; implement in util.py
     texts, labels = parse_sts(sts_data)
 
     print(f"Found {len(texts)} STS pairs")
 
-    score_types = ["NIST", "BLEU", "Word Error Rate", "Longest common substring", "Levenshtein distance"]
-    scores = {score_type: [] for score_type in score_types}
+    # TODO 2: Calculate the metrics here
+    score_types = ["NIST", "BLEU", "Word Error Rate", "Longest common substring", "Edit Distance"]
 
-    # TODO: Calculate the metrics here to fill the lists in scores
-
-
-    # This can stay as-is to print similar output to the sample
+    # Sample code to print results. You can alter the printing as you see fit. It is most important to put the results
+    # in a table in the README
     print(f"Semantic textual similarity for {sts_data}\n")
-    for metric_name, dists in scores.items():
-        score, sig = pearsonr(dists, labels)
-        print(f"{metric_name} correlation: {score:.03}")
+    for metric_name in score_types:
+        score = 0.0
+        print(f"{metric_name} correlation: {score:.03f}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
