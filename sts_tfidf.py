@@ -28,7 +28,7 @@ def main(sts_data):
 
 
     # TODO 2: Can normalization like removing stopwords remove differences that aren't meaningful?
-    # fill in preprocess_text above
+    # define the function preprocess_text above
     preproc_train_texts = [preprocess_text(text) for text in texts]
 
     # TODO 3: Learn another TfidfVectorizer for preprocessed data

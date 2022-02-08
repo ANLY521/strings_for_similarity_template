@@ -27,13 +27,13 @@ Edit Dist | (fill me) | -0.175| (fill me)
 Show usage of the homework script with command line flags (see example under lab, week 1).
 
 
-## lab, week 1: lab.py
+## lab, week 1: sts_nist.py
 
-`lab.py` calculates NIST machine translation metric for sentence pairs in an STS dataset.
+Calculates NIST machine translation metric for sentence pairs in an STS dataset.
 
 Example usage:
 
-`python lab.py --sts_data stsbenchmark/sts-dev.csv`
+`python sts_nist.py --sts_data stsbenchmark/sts-dev.csv`
 
 ## lab, week 2: sts_tfidf.py
 
