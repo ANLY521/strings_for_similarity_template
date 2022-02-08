@@ -12,15 +12,19 @@ def main(sts_data):
 
     print(f"Found {len(texts)} STS pairs")
 
-    # TODO 2: Calculate the metrics here
+    # TODO 2: Calculate each of the the metrics here for each text pair in the dataset
+    # HINT: Longest common substring can be complicated. Investigate difflib.SequenceMatcher for a good option.
     score_types = ["NIST", "BLEU", "Word Error Rate", "Longest common substring", "Edit Distance"]
 
+    #TODO 3: Calculate pearson r between each metric and the STS labels and report in the README.
     # Sample code to print results. You can alter the printing as you see fit. It is most important to put the results
     # in a table in the README
     print(f"Semantic textual similarity for {sts_data}\n")
     for metric_name in score_types:
         score = 0.0
         print(f"{metric_name} correlation: {score:.03f}")
+
+    # TODO 4: Complete writeup as specified by TODOs in README (describe metrics; show usage)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

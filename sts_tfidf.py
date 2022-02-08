@@ -32,39 +32,40 @@ def main(sts_data):
 
     # get a single list of texts to determine vocabulary and document frequency
     all_t1, all_t2 = zip(*texts)
-    print(len(all_t1))
+    print(f"{len(all_t1)} texts total")
     all_texts = all_t1 + all_t2
 
     # create a TfidfVectorizer
     # fit to the training data
-    vectorizer = TfidfVectorizer("content", lowercase=True, analyzer="word", use_idf=True, min_df=10)
+    vectorizer = TfidfVectorizer(input="content", lowercase=True, analyzer="word", use_idf=True, min_df=10)
     vectorizer.fit(all_texts)
 
     print("Checking the vocabulary")
-    term_vocab = vectorizer.get_feature_names()
+    term_vocab = vectorizer.get_feature_names_out()
     print(term_vocab[200:230])
 
     print("Exploring sentence representations created by the vectorizer")
     pair_reprs = vectorizer.transform(texts[0])
     # a sparse datatype - saves only which positions are nonzero (where words are observed)
-    print(type(pair_reprs))
+    print(type(pair_reprs)) # <class 'scipy.sparse.csr.csr_matrix'>
     print(pair_reprs)
     # compare the two representations
     pair_similarity = cosine_similarity(pair_reprs[0], pair_reprs[1])
     # similarity is returned in a matrix - have to get the right index to get a scalar
-    print(pair_similarity.shape)
-    print(pair_similarity[0, 0])
+    print(pair_similarity.shape) # (1,1)
+    print(pair_similarity[0, 0]) # a float
 
     # TODO 2: Can normalization like removing stopwords remove differences that aren't meaningful?
     # fill in preprocess_text above
     preproc_train_texts = [preprocess_text(text) for text in all_texts]
 
-    preproc_vectorizer = TfidfVectorizer("content", lowercase=True, analyzer="word",
-                                         token_pattern="\S+", use_idf=True, min_df=10)
-    preproc_vectorizer.fit(preproc_train_texts)
 
     # TODO 3: Learn another TfidfVectorizer for preprocessed data
     # Use token_pattern "\S+" in the TfidfVectorizer to split on spaces
+    preproc_vectorizer = TfidfVectorizer(input="content", lowercase=True, analyzer="word",
+                                         token_pattern="\S+", use_idf=True, min_df=10)
+    preproc_vectorizer.fit(preproc_train_texts)
+
 
     # TODO 4: compute cosine similarity for each pair of sentences, both with and without preprocessing
     cos_sims = []
